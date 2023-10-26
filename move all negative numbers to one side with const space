@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    
+    int n;
+    cin>>n;
+    int zeros=0,ones=0,twos=0;
+    vector<int> arr(n);
+    for(int i=0;i<n;i++){
+        
+        cin>>arr[i];
+    }
+    int l=0,r=n-1,temp=0;
+    while(l<r){
+        
+        if(arr[l]>=0 and arr[r]<0){
+            l=l+1;
+            r=r-1;
+            continue;
+        }
+        else if(arr[l]<0 and arr[r]>=0){
+            temp=arr[l];
+            arr[l]=arr[r];
+            arr[r]=temp;
+            l=l+1;
+            r=r-1;
+            continue;
+        }
+        else if(arr[l]<0 and arr[r]<0){
+            r=r-1;
+            continue;
+        }
+        else if(arr[l]>=0 and arr[r]>0){
+            l=l+1;
+            continue;
+        }
+    }
+
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+
+    return 0;
+    
+}
