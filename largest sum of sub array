@@ -1,0 +1,18 @@
+//function1 uses o(1) space and o(n^3) time complexity.
+
+long long function1(vector<int> arr,int n){
+    
+    long long ms,s=0;
+    for(int i=0;i<n;i++){
+        for(int j=i;j<n;j++){
+            s=0;
+            for(int k=i;k<j+1;k++){
+                s+=arr[k];
+            }
+            ms=max(ms,s);
+        }
+    }
+    
+    return ms;
+}
+
