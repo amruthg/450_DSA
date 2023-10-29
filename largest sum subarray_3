@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+using namespace std;
+//gives the largest sum subbarray in o(n) time complexity and O(1) space complexity.
+int main(){
+    
+    int n;
+    cin>>n;
+    
+    vector<int> arr(n);
+    for(int i=0;i<n;i++){
+        
+        cin>>arr[i];
+    }
+    int start =0,end=0;
+    int maxi=INT32_MIN,sum=0;;
+    for(int i=0;i<n;i++){
+        
+        sum+=arr[i];
+        if(sum>maxi){
+            end=i;
+            maxi=max(sum,maxi);
+        }
+        maxi=max(sum,maxi);
+        if(sum<0){
+            sum=0;
+            start=i;
+        }
+
+    }
+    
+    cout<<maxi<<" "<<start<<" "<<end;
+    return 0;
+    
+}
