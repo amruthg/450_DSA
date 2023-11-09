@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+void func(vector<int> in1,vector<int> in2,vector<int> in3,int n1,int n2,int n3){
+
+    int x=0,y=0,z=0;
+    while(x<n1 and y<n2 and z<n3){
+
+        if(in1[x]==in2[y] and in2[y]==in3[z]){
+            cout<<in1[x]<<endl;
+            x++;
+            y++;
+            z++;
+        }
+        else if(in1[x]<in2[y] or in1[x]<in3[z]){
+            x+=1;
+            continue;
+        }
+        else if(in2[y]<in3[z] or in2[y]<in1[x]){
+            y+=1;
+            continue;
+        }
+        else if(in3[z]<in1[x] or in3[z]<in2[y]){
+            z+=1;
+            continue;
+        }
+    }
+
+
+}
+int main(){
+    
+    int n1,n2,n3;
+    cin>>n1>>n2>>n3;
+    
+    vector<int> input1(n1);
+    vector<int> input2(n2);
+    vector<int> input3(n3);
+
+    for(int i=0;i<n1;i++){
+        cin>>input1[i];
+    }
+    for(int i=0;i<n2;i++){
+        cin>>input2[i];
+    }
+    for(int i=0;i<n3;i++){
+        cin>>input3[i];
+    }
+    func(input1,input2,input3,n1,n2,n3);
+    return 0;
+}
