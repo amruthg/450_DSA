@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+struct tree_node{
+
+	int data;
+	tree_node* left=NULL,*right=NULL;
+};
+
+vector<int> reverse_level_order(tree_node* root){
+	vector<int> ans;
+	stack<tree_node*> q;
+
+	if(root==NULL){
+		return ans;
+	}
+
+	q.push(root);
+	while(!q.empty()){
+		tree_node* temp=q.top();
+		q.pop();
+
+		if(temp->right!=NULL){
+			q.push(temp->right);
+		}
+		if(temp->left!=NULL){
+			q.push(temp->left);
+		}
+
+		ans.push_back(temp->data);
+	}
+	return ans;
+}
