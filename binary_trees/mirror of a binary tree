@@ -1,0 +1,73 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+struct tree_node{
+
+	int data;
+	struct tree_node* left,*right;
+};
+
+struct tree_node* new_node(int data){
+
+	struct tree_node* newnode= new struct tree_node;
+	newnode->data=data;
+	newnode->left=NULL;
+	newnode->right=NULL;
+
+	return newnode;
+};
+//this gives you the mirror traversal of the given tree
+vector<int> mirror1(tree_node* root){
+
+	vector<int> ans;
+	if(root==NULL){
+		return ans;
+	}
+
+	queue<tree_node*> q;
+	q.push(root);
+
+	while(!q.empty()){
+
+		tree_node* temp=q.front();
+		q.pop();
+
+		if(temp->right!=NULL){
+			q.push(temp->right);
+		}
+		if(temp->left!=NULL){
+			q.push(temp->left);
+		}
+		ans.push_back(temp->data);
+	}
+
+	return ans;
+};
+
+tree_node* mirror2(tree_node* root){
+
+	if(root==NULL){
+		return root;
+	}
+
+	queue<tree_node*> q;
+	q.push(root);
+	while(!q.empty()){
+		tree_node* temp=q.front();
+		q.pop();
+
+		if(temp->right!=NULL){
+			q.push(temp->right);
+		}
+		if(temp->left!=NULL){
+			q.push(temp->left);
+		}
+
+		tree_node* temp2=temp->right;
+		temp->right=temp->left;
+		temp->left=temp2;
+
+	}
+
+	return root;
+}
