@@ -14,7 +14,7 @@ tree_node* new_node(int d){
 
 }
 vector<int> ans;
-vector<int> inorder_traversal_recursion(tree_node* root){
+void inorder_traversal_recursion(tree_node* root){
 
 	if(root==NULL){
 		return;
