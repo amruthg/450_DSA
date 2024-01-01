@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+struct tree_node{
+
+	int data;
+	tree_node* right=NULL,*left=NULL;
+};
+
+tree_node* new_node(int d){
+	tree_node* node= new tree_node;
+	node->data=d;
+	return node;
+
+}
+vector<int> ans;
+vector<int> inorder_traversal_recursion(tree_node* root){
+
+	if(root==NULL){
+		return;
+	}
+
+	if(root->left!=NULL){
+		inorder_traversal_recursion(root->left);
+	}
+	ans.push_back(root->data);
+	if(root->right!=NULL){
+		inorder_traversal_recursion(root->right);
+	}
+}
