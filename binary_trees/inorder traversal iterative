@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+struct tree_node{
+
+	int data;
+	tree_node* right=NULL,*left=NULL;
+};
+
+tree_node* new_node(int d){
+	tree_node* node= new tree_node;
+	node->data=d;
+	return node;
+
+}
+
+vector<int> inorder_traversal_iterative(tree_node* root){
+
+	vector<int> ans;
+	stack<tree_node*> s;
+	tree_node* current= root;
+
+	while(!s.empty() or current!=NULL){
+		while(current!=NULL){
+			s.push(current);
+			current=current->left;
+		}
+		current=s.top();
+		s.pop();
+
+		ans.push_back(current->data);
+		current=current->right;
+	}
+
+	return ans;
+}
